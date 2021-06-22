@@ -11,7 +11,7 @@ import java.util.*;
 public class Categoria {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITYT)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "categoria_id")
     private Integer CategoriaId;
 
@@ -23,6 +23,12 @@ public class Categoria {
     @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Empleada> empleadas = new ArrayList<>();
     
+    public List<Empleada> getEmpleadas() {
+        return empleadas;
+    }
+    public void setEmpleadas(List<Empleada> empleadas) {
+        this.empleadas = empleadas;
+    }
     public Integer getCategoriaId() {
         return CategoriaId;
     }
@@ -42,4 +48,8 @@ public class Categoria {
         this.sueldoBase = sueldoBase;
     }
     
+    public void agregarEmpleada (Empleada empleada){
+        this.empleadas.add(empleada);
+    }
+
 }
