@@ -1,5 +1,6 @@
 package ar.com.ada.api.empleadas.services;
 
-public class CategoriaServices {
+public class CategoriaService {
+    
     
 }
