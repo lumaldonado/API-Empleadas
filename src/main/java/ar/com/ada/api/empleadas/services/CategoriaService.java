@@ -6,12 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.*;
 
 import ar.com.ada.api.empleadas.entitites.Categoria;
+import ar.com.ada.api.empleadas.repos.CategoriaRepository;
 
 @Service
 public class CategoriaService {
 
     //el autowired va atado al resto de las categorias
     //por eso si pones un autowired en otro lado tiene que tener una notacion
+    //Conecta las diferentes cosas entre si
 
     @Autowired
     CategoriaRepository repo;
