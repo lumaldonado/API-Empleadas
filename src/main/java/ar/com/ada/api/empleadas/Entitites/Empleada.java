@@ -19,8 +19,8 @@ public class Empleada {
     @JoinColumn(name = "categoria_id", referencedColumnName = "categoria_id")
     private Categoria categoria;
     private BigDecimal sueldo;
+    @Column (name = "estado_id")
     private int estado;
-
     @Column (name = "fecha_alta")
     private Date fechaAlta;
     @Column (name = "fecha_baja")
@@ -111,7 +111,7 @@ public class Empleada {
     public enum EstadoEmpleadaEnum{
 
         ACTIVO(1),
-        INACTIVO(2);
+        BAJA(2);
 
         private final int value;
         private EstadoEmpleadaEnum(int value){
