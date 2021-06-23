@@ -1,6 +1,6 @@
 package ar.com.ada.api.empleadas.entitites;
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.*;
 @Entity
