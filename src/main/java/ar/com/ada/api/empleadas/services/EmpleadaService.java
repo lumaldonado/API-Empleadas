@@ -20,7 +20,7 @@ public class EmpleadaService {
     EmpleadaRepository repo;
 
     @Autowired
-    CategoriaService caegoria;
+    CategoriaService categoriaService;
 
     public void crearEmpleada(Empleada empleada){
         repo.save(empleada);
@@ -48,8 +48,10 @@ public class EmpleadaService {
        repo.save(empleada);
     }
 
-    public List<Empleada> traerEmpleadaPorCategoria(Integer catId){
-        Categoria categoria = categoria.buscarCategoria(catId);
-    }
 
+    public List<Empleada> traerEmpleadaPorCategoria(Integer catId) {
+		Categoria categoria = categoriaService.buscarCategoria(catId);
+        return categoria.getEmpleadas();
+
+	}
 }
