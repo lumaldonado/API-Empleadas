@@ -39,4 +39,6 @@ public class CategoriaController  {
         return ResponseEntity.ok(service.traerCategorias());
         //return entity valor esperado
     }
+
+    
 }

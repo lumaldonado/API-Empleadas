@@ -28,6 +28,8 @@ public class EmpleadaController {
     public ResponseEntity<?> crearEmpleada(@RequestBody InfoEmpleadaNueva empleadaInfo){
         GenericResponse respuesta = new GenericResponse();
 
+        //pasar todo esto a un metodo de service
+
         Empleada empleada = new Empleada();
         empleada.setNombre(empleadaInfo.nombre);
         empleada.setEdad(empleadaInfo.edad);
@@ -36,6 +38,8 @@ public class EmpleadaController {
         Categoria categoria = categoriaService.buscarCategoria(empleadaInfo.categoriaId);
         empleada.setCategoria(categoria);
         empleada.setEstado(EstadoEmpleadaEnum.ACTIVO);
+
+        //hasta aca
 
         service.crearEmpleada(empleada);
         respuesta.isOk = true;
@@ -48,6 +52,34 @@ public class EmpleadaController {
     @GetMapping("/empleados")
     public ResponseEntity<List<Empleada>> traerEmpleadas(){
         return ResponseEntity.ok(service.traerEmpleadas());
-
     }
+
+
+   @GetMapping("/empleados/{id}")   
+   //La variable de los parentesis del metodo, 
+   //su nombre tiene que coincidir con la path variable
+   //y tambien hay que aclarar si lo es
+   public ResponseEntity<Empleada> getEmpleadaPorId(@PathVariable Integer id){
+    Empleada empleada = service.buscarEmpleada(id);  
+    return ResponseEntity.ok(empleada);
+   }
+
+   @DeleteMapping("/empleados/{id}")
+   public ResponseEntity<GenericResponse> bajaEmpleada(@PathVariable Integer id){
+    service.bajaEmpleadaPorId(id);
+    GenericResponse respuesta = new GenericResponse();
+    respuesta.isOk = true;
+    respuesta.id = id;
+    respuesta.message = "La empleada fue dada de baja con exito";
+    return ResponseEntity.ok(respuesta);
+
+   }
+   @GetMapping("/empleados/categorias/{catId}")
+   public ResponseEntity<List<Empleada>> obtenerEmpleadasPorCategoria(@PathVariable Integer catId){
+      List<Empleada> empleadas = service.traerEmpleadaPorCategoria(catId); 
+    return ResponseEntity.ok(empleadas);
+
+   }
+
+
 }
