@@ -3,6 +3,8 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.*;
+
+import ar.com.ada.api.empleadas.models.request.SueldoNuevoEmpleada;
 @Entity
 @Table(name = "empleada")
 public class Empleada {
@@ -73,8 +75,8 @@ public class Empleada {
     }
 
 
-    public void setSueldo(BigDecimal sueldo) {
-        this.sueldo = sueldo;
+    public void setSueldo(BigDecimal sueldoNuevo) {
+        this.sueldo = sueldoNuevo;
     }
 
 

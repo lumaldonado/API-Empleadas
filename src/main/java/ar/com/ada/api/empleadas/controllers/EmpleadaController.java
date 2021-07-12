@@ -1,5 +1,6 @@
 package ar.com.ada.api.empleadas.controllers;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import ar.com.ada.api.empleadas.entitites.Categoria;
 import ar.com.ada.api.empleadas.entitites.Empleada;
 import ar.com.ada.api.empleadas.entitites.Empleada.EstadoEmpleadaEnum;
 import ar.com.ada.api.empleadas.models.request.InfoEmpleadaNueva;
+import ar.com.ada.api.empleadas.models.request.SueldoNuevoEmpleada;
 import ar.com.ada.api.empleadas.models.response.GenericResponse;
 import ar.com.ada.api.empleadas.services.CategoriaService;
 import ar.com.ada.api.empleadas.services.EmpleadaService;
@@ -78,6 +80,18 @@ public class EmpleadaController {
    public ResponseEntity<List<Empleada>> obtenerEmpleadasPorCategoria(@PathVariable Integer catId){
       List<Empleada> empleadas = service.traerEmpleadaPorCategoria(catId); 
     return ResponseEntity.ok(empleadas);
+
+   }
+
+   @PutMapping("/empleados/{id}/sueldos")
+   public ResponseEntity<GenericResponse> modificarSueldo(@PathVariable Integer id, @RequestBody SueldoNuevoEmpleada sueldoNuevoInfo){
+       Empleada empleada = service.buscarEmpleada(id);
+       empleada.setSueldo(sueldoNuevoInfo.sueldoNuevo);
+       service.guardar(empleada);
+    GenericResponse respuesta = new GenericResponse();
+    respuesta.isOk = true;
+    respuesta.message = "Sueldo actualizado";
+    return ResponseEntity.ok(respuesta);
 
    }
 
