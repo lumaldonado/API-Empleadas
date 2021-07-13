@@ -61,8 +61,11 @@ public class EmpleadaController {
    //La variable de los parentesis del metodo, 
    //su nombre tiene que coincidir con la path variable
    //y tambien hay que aclarar si lo es
-   public ResponseEntity<Empleada> getEmpleadaPorId(@PathVariable Integer id){
+   public ResponseEntity<?> getEmpleadaPorId(@PathVariable Integer id){
     Empleada empleada = service.buscarEmpleada(id);  
+    if (empleada == null){
+         return ResponseEntity.notFound().build();
+    }
     return ResponseEntity.ok(empleada);
    }
 
