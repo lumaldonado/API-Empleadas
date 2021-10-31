@@ -32,16 +32,18 @@ public class EmpleadaController {
 
         //pasar todo esto a un metodo de service
 
-        Empleada empleada = new Empleada();
-        empleada.setNombre(empleadaInfo.nombre);
-        empleada.setEdad(empleadaInfo.edad);
-        empleada.setSueldo(empleadaInfo.sueldo);
-        empleada.setFechaAlta(new Date());
+        Empleada empleada = new Empleada(empleadaInfo.nombre, empleadaInfo.edad, empleadaInfo.sueldo, new Date());
+        //empleada.setNombre(empleadaInfo.nombre);
+        //empleada.setEdad(empleadaInfo.edad);
+        //empleada.setSueldo(empleadaInfo.sueldo);
+        //empleada.setFechaAlta(new Date());
+
+
         Categoria categoria = categoriaService.buscarCategoria(empleadaInfo.categoriaId);
         empleada.setCategoria(categoria);
         empleada.setEstado(EstadoEmpleadaEnum.ACTIVO);
 
-        //hasta aca
+        
 
         service.crearEmpleada(empleada);
         respuesta.isOk = true;

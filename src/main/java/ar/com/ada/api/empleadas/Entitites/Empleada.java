@@ -30,6 +30,10 @@ public class Empleada {
     private Date fechaBaja;
 
 
+    public Empleada(String nombre2, Integer edad2, BigDecimal sueldo2, Date date) {
+    }
+
+
     public Integer getEmpleadaId() {
         return empleadaId;
     }
