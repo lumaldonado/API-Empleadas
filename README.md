@@ -4,6 +4,8 @@ La misma tambien permite cargar empleadas a una base de datos creada usando MySQ
 
 Tecnología utilizada: Java Springboot
 
+Deploy en Heroku: https://empleadas-luciana-maldonado.herokuapp.com
+
 Data base: MySQL
 
 ![Empleadas](https://user-images.githubusercontent.com/79877306/140386990-e0faff70-67e5-4a31-bdd7-80bc34d363ca.PNG)
