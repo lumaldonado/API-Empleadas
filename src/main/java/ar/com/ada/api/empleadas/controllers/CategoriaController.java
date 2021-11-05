@@ -17,7 +17,7 @@ import ar.com.ada.api.empleadas.services.CategoriaService;
 public class CategoriaController  {
 
     @Autowired
-    private CategoriaService service;
+    CategoriaService service;
 
    @PostMapping("/categorias")
    //NINGUN WEB METHOD DEVUELVE VOID

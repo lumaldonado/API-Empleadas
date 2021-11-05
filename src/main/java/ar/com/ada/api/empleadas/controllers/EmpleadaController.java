@@ -21,7 +21,7 @@ import ar.com.ada.api.empleadas.services.EmpleadaService;
 public class EmpleadaController {
     
     @Autowired
-    private EmpleadaService service;
+    EmpleadaService service;
 
     @Autowired
     CategoriaService categoriaService;
